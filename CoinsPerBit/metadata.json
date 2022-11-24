@@ -1,0 +1,8 @@
+{
+  "name": "CoinsPerBit",
+  "description": "Uses data from https://cpb.semisol.dev",
+  "creator": "Farlow",
+  "version": "0.0.3",
+  "entry": "index.js",
+  "requires": ["IRC", "requestV2"]
+}
