@@ -1,0 +1,7 @@
+{
+  "name": "IRCCopy",
+  "creator": "cheetoah",
+  "version": "0.0.2",
+  "entry": "index.js",
+  "requires": ["PogData", "IRC"]
+}
