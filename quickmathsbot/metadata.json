@@ -1,0 +1,7 @@
+{
+    "name": "HypixelMessenger",
+    "author": "cheetoah",
+    "description": "Simple interface for hypixel messages",
+    "version": "2.0.0",
+    "entry": "index.js"
+}
