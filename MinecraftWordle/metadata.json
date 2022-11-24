@@ -1,0 +1,8 @@
+{
+  "name": "MinecraftWordle",
+  "creator": "cheetoah",
+  "description": "Wordle lol",
+  "version": "1.1.0",
+  "entry": "index.js",
+  "requires": ["IRC"]
+}
