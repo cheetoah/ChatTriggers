@@ -15,12 +15,9 @@ const projection_matrix = [
 
 
 function matmult(matrix1, matrix2) {
-  
   if (matrix1[0].length !== matrix2.length) {
     return ChatLib.chat("§c[ERROR] Matrices cannot be multiplied.")
   }
- 
-
  
   let result = [];
   for (let i = 0; i < matrix1.length; i++) {
@@ -29,7 +26,6 @@ function matmult(matrix1, matrix2) {
       result[i].push(0);
     }
   }
-
 
   for (let i = 0; i < matrix1.length; i++) {
     for (let j = 0; j < matrix2[0].length; j++) {
@@ -122,7 +118,6 @@ function connect(i,j,points){
 window.registerDraw((mx, my, pt) => {
   Renderer.drawRect(Renderer.BLACK, WindowX, WindowY, WIDTH, HEIGHT)
 
-  
   for (let p = 0; p < 4; p++){
     connect(p, (p+1) % 4, projected_points)
     connect(p+4, ((p+1) % 4) + 4, projected_points)
