@@ -1,18 +1,14 @@
 /// <reference types="../CTAutocomplete" />
+
 const WIDTH = 250
 const HEIGHT = 250
-
+const LINE_WIDTH = 0.35
+const LINE_COLOUR = Renderer.color(54, 214, 230)
 const SCALE = 69
+const draw_pos = [(WIDTH / 2), (HEIGHT / 2)]
 
 let WindowX = (Renderer.screen.getWidth() / 2) - (WIDTH / 2) 
 let WindowY = (Renderer.screen.getHeight() / 2) - (HEIGHT / 2)
-
-
-const projection_matrix = [
-  [1, 0, 0],
-  [0, 1, 0],
-  [0, 0, 0]
-]
 
 
 function matmult(a, b) {
@@ -20,31 +16,25 @@ function matmult(a, b) {
     return ChatLib.chat("§c[ERROR] Matrices cannot be multiplied.")
   }
  
-  let result = [];
+  let result = []
   for (let i = 0; i < a.length; i++) {
-    result.push([]);
+    result.push([])
     for (let j = 0; j < b[0].length; j++) {
-      result[i].push(0);
+      result[i].push(0)
     }
   }
 
   for (let i = 0; i < a.length; i++) {
     for (let j = 0; j < b[0].length; j++) {
       for (let k = 0; k < a[0].length; k++) {
-        result[i][j] += a[i][k] * b[k][j];
+        result[i][j] += a[i][k] * b[k][j]
       }
     }
   }
 
-  return result;
+  return result
 }
 
-
-register("command", () => {
-  window.open()
-}).setName("c")
-
-let window = new Gui()
 
 let points = [
   [[-1], [-1], [1]],
@@ -57,20 +47,22 @@ let points = [
   [[-1], [1], [-1]]
 ]
 
+const projection_matrix = [
+  [1, 0, 0],
+  [0, 1, 0],
+  [0, 0, 0]
+]
 
-
-const draw_pos = [(WIDTH / 2), (HEIGHT / 2)]
 
 let anglex = 0
 let angley = 0
 let anglez = 0
 
-
 let projected_points = []
-
 let furthest_point
-
 let lowestZ = 0
+
+
 register("step", (c) => {
   let i = 0
   let f = 0
@@ -122,9 +114,6 @@ register("step", (c) => {
   anglez += 0.0075
 }).setFps(30)
 
-const LINE_WIDTH = 0.35
-const LINE_COLOUR = Renderer.color(54, 214, 230)
-
 
 function connect(i,j,points){
   let p = furthest_point
@@ -136,6 +125,9 @@ function connect(i,j,points){
 
 }
 
+
+let window = new Gui()
+
 window.registerDraw((mx, my, pt) => {
   Renderer.drawRect(Renderer.BLACK, WindowX, WindowY, WIDTH, HEIGHT)
   Renderer.drawString("30 FPS", WindowX + 2, WindowY + HEIGHT - 10)
@@ -144,8 +136,9 @@ window.registerDraw((mx, my, pt) => {
     connect(p+4, ((p+1) % 4) + 4, projected_points)
     connect(p, (p+4), projected_points)
   }
-  
-  //Renderer.drawString("f", WindowX + p[0], WindowY + p[1])
-
-  
 })
+
+
+register("command", () => {
+  window.open(); ChatLib.chat("Spin cube :)")
+}).setName("c")
