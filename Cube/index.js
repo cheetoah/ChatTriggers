@@ -5,7 +5,7 @@ const HEIGHT = 250
 const LINE_WIDTH = 0.35
 const LINE_COLOUR = Renderer.color(54, 214, 230)
 const SCALE = 69
-const draw_pos = [(WIDTH / 2), (HEIGHT / 2)]
+const DRAW_POS = [(WIDTH / 2), (HEIGHT / 2)]
 
 let WindowX = (Renderer.screen.getWidth() / 2) - (WIDTH / 2) 
 let WindowY = (Renderer.screen.getHeight() / 2) - (HEIGHT / 2)
@@ -96,8 +96,8 @@ register("step", (c) => {
     
     let projected2d = matmult(projection_matrix, rotated2d)
 
-    let x = ((projected2d[0, 0] * SCALE) + draw_pos[0])
-    let y = ((projected2d[0, 1] * SCALE) + draw_pos[1])
+    let x = ((projected2d[0, 0] * SCALE) + DRAW_POS[0])
+    let y = ((projected2d[0, 1] * SCALE) + DRAW_POS[1])
 
     projected_points[i] = [x, y]
 
