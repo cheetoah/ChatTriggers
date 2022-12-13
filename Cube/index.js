@@ -5,7 +5,7 @@ const HEIGHT = 500
 let WindowX = (Renderer.screen.getWidth() / 2) - (WIDTH / 2)
 let WindowY = (Renderer.screen.getHeight() / 2) - (HEIGHT / 2)
 
-const SCALE = 80
+const SCALE = 85
 
 const projection_matrix = [
   [1, 0, 0],
@@ -57,6 +57,7 @@ let points = [
 ]
 
 
+
 const draw_pos = [(WIDTH / 2) + (SCALE / 4), (HEIGHT / 2) + (SCALE / 4)]
 
 let anglex = 0
@@ -66,9 +67,12 @@ let anglez = 0
 
 let projected_points = []
 
-register("step", () => {
-  let i = 0
+let furthest_point
 
+let lowestZ = 0
+register("step", (c) => {
+  let i = 0
+  let f = 0
   let rotation_matrix_Z = [
     [Math.cos(anglez), -Math.sin(anglez), 0],
     [Math.sin(anglez), Math.cos(anglez), 0],
@@ -87,6 +91,8 @@ register("step", () => {
     [0, Math.sin(anglex), Math.cos(anglex)]
   ]
 
+  lowestZ = 0
+
   points.forEach(point => {
     let rotated2d = matmult(rotation_matrix_Z, point)
     
@@ -94,25 +100,38 @@ register("step", () => {
     
     rotated2d = matmult(rotation_matrix_X, rotated2d)
 
+    
     let projected2d = matmult(projection_matrix, rotated2d)
 
-    let x = Math.floor(((projected2d[0, 0] * SCALE) + draw_pos[0]) * 10) / 10
-    let y = Math.floor(((projected2d[0, 1] * SCALE) + draw_pos[1])* 10) / 10
+    let x = ((projected2d[0, 0] * SCALE) + draw_pos[0])
+    let y = ((projected2d[0, 1] * SCALE) + draw_pos[1])
 
     projected_points[i] = [x, y]
+
+    if (rotated2d[2][0] <= lowestZ){
+      
+      furthest_point = [x, y]
+      lowestZ = rotated2d[2][0]
+    }
     i++
   });
 
-  anglex += 0.0025
-  angley += 0.0015
-  anglez += 0.002
-}).setFps(75)
+  anglex += 0.004
+  angley += 0.004
+  anglez += 0.004
+}).setFps(69)
 
 const LINE_WIDTH = 0.5
-const LINE_COLOUR = Renderer.AQUA
+const LINE_COLOUR = Renderer.WHITE
+
 
 function connect(i,j,points){
-  Renderer.drawLine(LINE_COLOUR, WindowX + points[i][0], points[i][1], WindowX + points[j][0], points[j][1], LINE_WIDTH)
+  let p = furthest_point
+  if ((points[i][0] == p[0] && points[i][1] == p[1]) || (points[j][0] == p[0] && points[j][1] == p[1])) return
+  
+ 
+  Renderer.drawLine(LINE_COLOUR, WindowX + points[i][0], points[i][1], WindowX + points[j][0], points[j][1], LINE_WIDTH, 1)
+
 }
 
 window.registerDraw((mx, my, pt) => {
@@ -122,5 +141,9 @@ window.registerDraw((mx, my, pt) => {
     connect(p, (p+1) % 4, projected_points)
     connect(p+4, ((p+1) % 4) + 4, projected_points)
     connect(p, (p+4), projected_points)
-  }  
+  }
+  
+  //Renderer.drawString("f", WindowX + p[0], WindowY + p[1])
+
+  
 })
