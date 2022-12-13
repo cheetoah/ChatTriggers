@@ -2,7 +2,7 @@
 const WIDTH = 250
 const HEIGHT = 250
 
-const SCALE = 45
+const SCALE = 69
 
 let WindowX = (Renderer.screen.getWidth() / 2) - (WIDTH / 2) 
 let WindowY = (Renderer.screen.getHeight() / 2) - (HEIGHT / 2)
@@ -15,23 +15,23 @@ const projection_matrix = [
 ]
 
 
-function matmult(matrix1, matrix2) {
-  if (matrix1[0].length !== matrix2.length) {
+function matmult(a, b) {
+  if (a[0].length !== b.length) {
     return ChatLib.chat("§c[ERROR] Matrices cannot be multiplied.")
   }
  
   let result = [];
-  for (let i = 0; i < matrix1.length; i++) {
+  for (let i = 0; i < a.length; i++) {
     result.push([]);
-    for (let j = 0; j < matrix2[0].length; j++) {
+    for (let j = 0; j < b[0].length; j++) {
       result[i].push(0);
     }
   }
 
-  for (let i = 0; i < matrix1.length; i++) {
-    for (let j = 0; j < matrix2[0].length; j++) {
-      for (let k = 0; k < matrix1[0].length; k++) {
-        result[i][j] += matrix1[i][k] * matrix2[k][j];
+  for (let i = 0; i < a.length; i++) {
+    for (let j = 0; j < b[0].length; j++) {
+      for (let k = 0; k < a[0].length; k++) {
+        result[i][j] += a[i][k] * b[k][j];
       }
     }
   }
@@ -118,18 +118,18 @@ register("step", (c) => {
   });
 
   anglex += 0.012
-  angley += 0.007
-  anglez += 0.0175
+  angley -= 0.0025
+  anglez += 0.0075
 }).setFps(30)
 
 const LINE_WIDTH = 0.35
-const LINE_COLOUR = Renderer.color(34, 230, 210)
+const LINE_COLOUR = Renderer.color(54, 214, 230)
 
 
 function connect(i,j,points){
   let p = furthest_point
   if ((points[i][0] == p[0] && points[i][1] == p[1]) || (points[j][0] == p[0] && points[j][1] == p[1])) 
-    return //Renderer.drawLine(Renderer.color(34, 230, 210, 30), WindowX + points[i][0], WindowY + points[i][1], WindowX + points[j][0], WindowY + points[j][1], LINE_WIDTH / 3, 1)
+    return Renderer.drawLine(Renderer.color(54, 214, 230, 30), WindowX + points[i][0], WindowY + points[i][1], WindowX + points[j][0], WindowY + points[j][1], LINE_WIDTH / 4, 1)
   
 
   Renderer.drawLine(LINE_COLOUR, WindowX + points[i][0], WindowY + points[i][1], WindowX + points[j][0], WindowY + points[j][1], LINE_WIDTH, 1)
