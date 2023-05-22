@@ -1,0 +1,7 @@
+{
+  "name": "Keystrokes",
+  "creator": "Cheeto",
+  "version": "0.0.1",
+  "entry": "index.js",
+  "requires": ["PogData"]
+}

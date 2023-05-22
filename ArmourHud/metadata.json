@@ -1,0 +1,7 @@
+{
+  "name": "ArmourHud",
+  "creator": "Farlow",
+  "version": "0.0.4",
+  "entry": "index.js",
+  "requires": ["PogData"]
+}
