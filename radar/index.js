@@ -50,10 +50,10 @@ class Dot{
    //Renderer.drawString(`${PLAYER_YAW}`, settings.x + (settings.width / 2), settings.y + (settings.width / 2))
 
 
-    let pos1 = {x:(settings.width / 2) * Math.cos((PLAYER_YAW) / 60), y:(settings.width / 2) * Math.sin((PLAYER_YAW) / 60)}
-    let pos2 = {x:(settings.width / 2) * Math.cos((PLAYER_YAW - 45) / 60), y:(settings.width / 2) * Math.sin((PLAYER_YAW - 45) / 60)}
+    let pos1 = {x:(settings.width / 2) * Math.cos((PLAYER_YAW + ((Client.settings.getFOV() * 1.5) / 2)) / 57.52), y:(settings.width / 2) * Math.sin((PLAYER_YAW + ((Client.settings.getFOV() * 1.5) / 2)) / 57.52)}
+    let pos2 = {x:(settings.width / 2) * Math.cos((PLAYER_YAW - ((Client.settings.getFOV() * 1.5) / 2)) / 57.52), y:(settings.width / 2) * Math.sin((PLAYER_YAW - ((Client.settings.getFOV() * 1.5) / 2)) / 57.52)}
     Renderer.drawLine(Renderer.AQUA, settings.x + (settings.width / 2), settings.y + (settings.width / 2), pos1.x + settings.x + (settings.width / 2), pos1.y + settings.y + (settings.width / 2), 0.5)
-    //Renderer.drawLine(Renderer.AQUA, settings.x + (settings.width / 2), settings.y + (settings.width / 2), pos2.x + settings.x + (settings.width / 2), pos2.y + settings.y + (settings.width / 2), 0.5)
+    Renderer.drawLine(Renderer.AQUA, settings.x + (settings.width / 2), settings.y + (settings.width / 2), pos2.x + settings.x + (settings.width / 2), pos2.y + settings.y + (settings.width / 2), 0.5)
   }
 
   CalculateLocation(){
