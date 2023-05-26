@@ -4,18 +4,16 @@
 let players = []
 
 
+
+
 register("step", () => {
   players = []
   dots = []
   World.getAllPlayers().forEach((p) => {
-    let pc = {"x": Player.getX(), "y": Player.getY(), "z": Player.getZ()}
-    
-    let dist = DistanceTo(pc.x, pc.z)
-
-    if (dist < 20){
+  
       players.push(p)
       dots.push(new Dot(p))
-    }
+    
   })
 }).setDelay(1)
 
@@ -34,10 +32,10 @@ class Dot{
     this.x = 0
     this.y = 0
 
-    this.inView = true
+    this.inView = Player.asPlayerMP().canSeeEntity(new Entity(playermp.getEntity()))
     this.dist = 0
   }
-
+  
   Draw(){
     if (this.x < 0-(settings.width) || this.x > settings.width  || this.y < 0-(settings.width) || this.y > settings.width) return
     
