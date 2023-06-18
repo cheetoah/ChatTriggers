@@ -1,0 +1,8 @@
+{
+  "name": "CreateModule",
+  "creator": "Squagward",
+  "version": "0.0.1",
+  "entry": "index.js",
+  "description": "Create a basic module via a command to save the minor inconvenience of making a folder and metadata manually :).",
+  "requires": ["CTAutocomplete"]
+}
