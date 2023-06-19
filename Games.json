@@ -9,13 +9,13 @@
     "command": "pong",
     "author": "Farlow"
   },
-  "Narada": {
-    "modulename": "Minesweeper",
+  "Minesweeper": {
+    "modulename": "Narada",
     "command": "minesweeper",
     "author": "Dalwyn"
   },
   "Wordle": {
-    "modulename": "Sudoku",
+    "modulename": "MinecraftWordle",
     "command": "wordle",
     "author": "Farlow"
   }
