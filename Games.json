@@ -1,23 +1,23 @@
 {
   // What are you doing here?
-  Sudoku : {
-    modulename: "Sudoku",
-    command: "sudoku",
-    author: "Farlow"
+  "Sudoku": {
+    "modulename": "Sudoku",
+    "command": "sudoku",
+    "author": "Farlow"
   },
-  Pong: {
-    modulename: "Pong",
-    command: "pong",
-    author: "Farlow"
+  "Pong": {
+    "modulename": "Pong",
+    "command": "pong",
+    "author": "Farlow"
   },
-  Narada: {
-    modulename: "Minesweeper",
-    command: "minesweeper",
-    author: "Dalwyn"
+  "Narada": {
+    "modulename": "Minesweeper",
+    "command": "minesweeper",
+    "author": "Dalwyn"
   },
-  Wordle: {
-    modulename: "Sudoku",
-    command: "wordle",
-    author: "Farlow"
+  "Wordle": {
+    "modulename": "Sudoku",
+    "command": "wordle",
+    "author": "Farlow"
   }
 }
