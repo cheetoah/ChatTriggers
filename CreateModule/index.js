@@ -482,3 +482,4 @@ gui.registerOpened(() => {
   verifyButton.setPos({x: ui.x, y:ui.y + (ui.height / 2) + 30})
   cancelButton.setPos({x: ui.x + ui.width - cancelButton.width, y:ui.y + (ui.height / 2) + 30})
 })
+

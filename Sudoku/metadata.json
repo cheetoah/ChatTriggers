@@ -1,0 +1,6 @@
+{
+  "name": "Sudoku",
+  "creator": "Farlow",
+  "version": "0.0.2",
+  "entry": "index.js"
+}
